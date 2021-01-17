@@ -6,7 +6,7 @@ public class Flashlight : MonoBehaviour
 {
     public bool active = false;
     public GameObject Light;
-    //public AudioSource clickSound;
+    public AudioSource clickSound;
 
     void Start()
     {
@@ -19,7 +19,7 @@ public class Flashlight : MonoBehaviour
         if(Input.GetButtonDown("Flashlight")){
             active=!active;
             Light.SetActive(active);
-            //clickSound.Play();
+            clickSound.Play();
         }
     }
 }
