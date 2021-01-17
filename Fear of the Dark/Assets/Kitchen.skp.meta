@@ -3,7 +3,12 @@ guid: 7bb8e40e99a383b468207f8443e5e0fd
 SketchUpImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: '[Translucent_Glass_Gray]4'
+    second: {fileID: 2100000, guid: cdb6080d2c524204eb607b3ef3c483bd, type: 2}
   materials:
     materialImportMode: 1
     materialName: 2
@@ -81,7 +86,7 @@ SketchUpImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.0254
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
