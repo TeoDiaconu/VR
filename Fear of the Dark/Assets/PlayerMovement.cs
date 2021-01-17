@@ -5,33 +5,24 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
-    public float speed = 5f;
+    public float speed = 4f;
     Vector3 velocity;
-    public float gravity = -9.81f;
-    //public Transform groundCheck;
-    //public float groundDistance = 0.4f;
-    //public LayerMask groundMask;
-    //bool isGrounded;
+    float gravity = -9.81f;
+    float smoothTime = 0.2f;
+    Vector2 currentDirection = Vector2.zero;
+    Vector2 currentDirectionVelocity = Vector2.zero;
 
-    // Update is called once per frame
     void Update()
     {
-        //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        Vector2 targetDirection = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+        targetDirection.Normalize();
 
-        //if(isGrounded && velocity.y <0){
-        //    velocity.y = -2f;
-        //}
+        currentDirection = Vector2.SmoothDamp(currentDirection, targetDirection, ref currentDirectionVelocity, smoothTime);
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z;
-
+        Vector3 move = transform.right * currentDirection.x + transform.forward * currentDirection.y;
         controller.Move(move * speed * Time.deltaTime);
 
-        //velocity.y += gravity * Time.deltaTime * Time.deltaTime;
         velocity.y = gravity * 10;
-
         controller.Move(velocity);
     }
 }
