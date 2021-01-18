@@ -46,6 +46,7 @@
      <Compile Include="Assets\Scripts\MouseLook.cs" />
      <Compile Include="Assets\Scripts\OpenDoor.cs" />
      <Compile Include="Assets\Scripts\PickUp.cs" />
+     <Compile Include="Assets\Scripts\PlaceCandles.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <None Include="Assets\QuickOutline\Resources\Shaders\OutlineMask.shader" />
      <None Include="Assets\QuickOutline\Readme.txt" />
