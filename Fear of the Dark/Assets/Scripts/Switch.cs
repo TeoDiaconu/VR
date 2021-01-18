@@ -1,24 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Switch : MonoBehaviour, IInteractable
 {
     public float maxRange = 10f;
     public float MaxRange{get{return maxRange;}}
 
-    private bool active = false;
-    private GameObject Light;
+    public Text prompt;
+    public bool active = false;
+    public GameObject Light;
 
     void Start()
     {
-        Light = GameObject.Find("chadelier");
         Light.SetActive(active);
     }
 
     public void OnStartHover()
     {
-        Debug.Log("Press E to interact");
+        prompt.text = "Interact (E)";
     }
     public void OnInteract()
     {
@@ -27,7 +28,6 @@ public class Switch : MonoBehaviour, IInteractable
     }
     public void OnEndHover()
     {
-        Debug.Log("Switch out of range");
+        prompt.text = "";
     }
-
 }

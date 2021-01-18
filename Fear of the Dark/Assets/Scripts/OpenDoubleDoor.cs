@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OpenDoubleDoor : MonoBehaviour, IInteractable
 {
     public float maxRange = 10f;
     public float MaxRange{get{return maxRange;}}
 
+    public Text prompt;
     public GameObject doorA;
     public GameObject doorB;
     Animator _doorAnimatorA;
@@ -22,7 +24,7 @@ public class OpenDoubleDoor : MonoBehaviour, IInteractable
 
     public void OnStartHover()
     {
-        Debug.Log("Press E to interact");
+        prompt.text = "Interact (E)";
     }
     public void OnInteract()
     {
@@ -32,6 +34,6 @@ public class OpenDoubleDoor : MonoBehaviour, IInteractable
     }
     public void OnEndHover()
     {
-        Debug.Log("Double door out of range");
+        prompt.text = "";
     }
 }

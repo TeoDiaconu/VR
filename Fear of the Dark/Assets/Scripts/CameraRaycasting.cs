@@ -87,14 +87,12 @@ public class CameraRaycasting : MonoBehaviour
                             }
                         }
                     }
-                    //else if (focus.tag == "generator") {
-                        //foreach (GameObject light in lights)
-                        //{
-                            //i++;
-                            //Debug.Log(i);
-                            //light.SetActive(true);
-                        //}
-                    //}
+                    else if (focus.tag == "generator") {
+                        foreach (GameObject light in lights)
+                        {
+                            light.SetActive(true);
+                        }
+                    }
                     else if (focus.tag == "KitchenCandles")
                     {
                         if (inventory.Contains(1) && inventory.Contains(2))
