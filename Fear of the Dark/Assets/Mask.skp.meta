@@ -3,12 +3,7 @@ guid: 3916acabdd6ee72418f3f9b3a386e392
 SketchUpImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Roofing_Shingles_Asphalt
-    second: {fileID: 2800000, guid: 8f567dd68014884459aefda064b1c648, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 2
@@ -86,7 +81,7 @@ SketchUpImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.0254
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
@@ -102,8 +97,8 @@ SketchUpImporter:
   assetBundleVariant: 
   generateBackFace: 1
   mergeCoplanarFaces: 0
-  selectedNodes: 000000000100000002000000
+  selectedNodes: 0000000001000000
   assetHash:
     serializedVersion: 2
-    Hash: c696d1a919695e0b0cf4cb2887ef500c
+    Hash: 0265d11ff59defb697cdb6597c49dc34
   fileUnit: 0

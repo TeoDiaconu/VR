@@ -69,13 +69,8 @@ public class CameraRaycasting : MonoBehaviour
         {
             if(currentTarget!=null)
             {
-                currentTarget.OnInteract();
                 if (focus != null)
                 {
-                    if (focus.tag != "Untagged" && focus.tag != "small_lamp")
-                    {
-                        addToInventory();
-                    }
                     if (focus.tag == "small_lamp")
                     {
                         lampLight = (Light)focus.GetComponentInChildren(typeof(Light));
@@ -93,6 +88,19 @@ public class CameraRaycasting : MonoBehaviour
                                 lampLight.enabled = !lampLight.enabled;
                             }
                         }
+                    }
+                    else if(focus.tag == "KitchenCandles")
+                    {
+                        if(inventory.Contains(1) && inventory.Contains(2)){
+                            currentTarget.OnInteract();
+                        }
+                    }
+                    else if(focus.tag != "Untagged" && focus.tag != "switch"){
+                        addToInventory();
+                    }
+                    else
+                    {
+                        currentTarget.OnInteract();
                     }
                 }
             }

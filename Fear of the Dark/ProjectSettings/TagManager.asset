@@ -11,6 +11,7 @@ TagManager:
   - candle
   - generator
   - switch
+  - KitchenCandles
   layers:
   - Default
   - TransparentFX
