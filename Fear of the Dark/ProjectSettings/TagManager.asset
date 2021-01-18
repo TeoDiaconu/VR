@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - small_lamp
+  - bulb
+  - matches
+  - flash
+  - candle
+  - generator
+  - switch
   layers:
   - Default
   - TransparentFX

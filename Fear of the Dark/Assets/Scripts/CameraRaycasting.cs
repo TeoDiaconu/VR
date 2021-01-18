@@ -7,6 +7,17 @@ public class CameraRaycasting : MonoBehaviour
     public float range;
     private IInteractable currentTarget;
     public Camera mainCamera;
+    private GameObject focus = null;
+    private Light lampLight;
+    private GameObject player;
+    private List<int> inventory;
+
+    private void Start()
+    {
+        inventory = new List<int>();
+        player = GameObject.Find("FirstPerson");
+        player.GetComponent<Flashlight>().enabled = false;
+    }
 
     private void RaycastForInteractable(){
         RaycastHit hit;
@@ -32,6 +43,7 @@ public class CameraRaycasting : MonoBehaviour
                             currentTarget.OnEndHover();
                         }
                         currentTarget = interactable;
+                        focus = hit.transform.gameObject;
                         currentTarget.OnStartHover();
                         return;
                     }
@@ -58,7 +70,58 @@ public class CameraRaycasting : MonoBehaviour
             if(currentTarget!=null)
             {
                 currentTarget.OnInteract();
+                if (focus != null)
+                {
+                    if (focus.tag != "Untagged" && focus.tag != "small_lamp")
+                    {
+                        addToInventory();
+                    }
+                    if (focus.tag == "small_lamp")
+                    {
+                        lampLight = (Light)focus.GetComponentInChildren(typeof(Light));
+                        if (!inventory.Contains(3))
+                        {
+                            if (lampLight.enabled)
+                            {
+                                lampLight.enabled = !lampLight.enabled;
+                            }
+                        }
+                        else
+                        {
+                            if (!lampLight.enabled)
+                            {
+                                lampLight.enabled = !lampLight.enabled;
+                            }
+                        }
+                    }
+                }
             }
+        }
+    }
+
+    void addToInventory()
+    {
+        if (focus.tag == "matches")
+        {
+            inventory.Add(1);
+            focus.SetActive(false);
+
+        }
+        else if (focus.tag == "candle")
+        {
+            inventory.Add(2);
+            focus.SetActive(false);
+        }
+        else if (focus.tag == "bulb")
+        {
+            inventory.Add(3);
+            focus.SetActive(false);
+        }
+        else if (focus.tag == "flash")
+        {
+            inventory.Add(4);
+            focus.SetActive(false);
+            player.GetComponent<Flashlight>().enabled = true;
         }
     }
 }
