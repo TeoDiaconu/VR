@@ -11,12 +11,16 @@ public class CameraRaycasting : MonoBehaviour
     private Light lampLight;
     private GameObject player;
     private List<int> inventory;
+    private GameObject[] lights;
+    private int i = 0;
 
     private void Start()
     {
+     
         inventory = new List<int>();
         player = GameObject.Find("FirstPerson");
         player.GetComponent<Flashlight>().enabled = false;
+        lights = GameObject.FindGameObjectsWithTag("willdie");
     }
 
     private void RaycastForInteractable(){
@@ -74,28 +78,32 @@ public class CameraRaycasting : MonoBehaviour
                     if (focus.tag == "small_lamp")
                     {
                         lampLight = (Light)focus.GetComponentInChildren(typeof(Light));
-                        if (!inventory.Contains(3))
-                        {
-                            if (lampLight.enabled)
-                            {
-                                lampLight.enabled = !lampLight.enabled;
-                            }
-                        }
-                        else
+                        if (inventory.Contains(3))
                         {
                             if (!lampLight.enabled)
                             {
                                 lampLight.enabled = !lampLight.enabled;
+                                StartCoroutine(lightsOut());
                             }
                         }
                     }
-                    else if(focus.tag == "KitchenCandles")
+                    //else if (focus.tag == "generator") {
+                        //foreach (GameObject light in lights)
+                        //{
+                            //i++;
+                            //Debug.Log(i);
+                            //light.SetActive(true);
+                        //}
+                    //}
+                    else if (focus.tag == "KitchenCandles")
                     {
-                        if(inventory.Contains(1) && inventory.Contains(2)){
+                        if (inventory.Contains(1) && inventory.Contains(2))
+                        {
                             currentTarget.OnInteract();
                         }
                     }
-                    else if(focus.tag != "Untagged" && focus.tag != "switch"){
+                    else if (focus.tag != "Untagged" && focus.tag != "switch")
+                    {
                         addToInventory();
                     }
                     else
@@ -130,6 +138,19 @@ public class CameraRaycasting : MonoBehaviour
             inventory.Add(4);
             focus.SetActive(false);
             player.GetComponent<Flashlight>().enabled = true;
+        }
+    }
+
+    IEnumerator lightsOut()
+    {
+        yield return new WaitForSeconds(5);
+
+        GameObject sw = GameObject.Find("switch_model");
+        sw.GetComponent<Switch>().enabled = false;
+
+        foreach (GameObject light in lights)
+        {
+            light.SetActive(false);
         }
     }
 }

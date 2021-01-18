@@ -7,11 +7,12 @@ public class Switch : MonoBehaviour, IInteractable
     public float maxRange = 10f;
     public float MaxRange{get{return maxRange;}}
 
-    public bool active = false;
-    public GameObject Light;
+    private bool active = false;
+    private GameObject Light;
 
     void Start()
     {
+        Light = GameObject.Find("chadelier");
         Light.SetActive(active);
     }
 
@@ -28,4 +29,5 @@ public class Switch : MonoBehaviour, IInteractable
     {
         Debug.Log("Switch out of range");
     }
+
 }

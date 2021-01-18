@@ -12,6 +12,7 @@ TagManager:
   - generator
   - switch
   - KitchenCandles
+  - willdie
   layers:
   - Default
   - TransparentFX
