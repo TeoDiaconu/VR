@@ -33,6 +33,8 @@ public class DieOut : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         Light.enabled = !Light.enabled;
+
+        GameObject.Find("bedLamp").GetComponent<FixLamp>().enabled = true;
     }
 
 }
